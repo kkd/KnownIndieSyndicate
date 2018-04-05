@@ -150,6 +150,7 @@ class Main extends \Idno\Common\Plugin {
             $params = [
                 'h' => 'entry',
                 'like-of' => $object->likeof,
+                'content' => $object->likeof,
                 'url' => $object->getSyndicationURL(),
             ];
             $this->doMicropub($sa, $object, $params);
@@ -220,7 +221,11 @@ class Main extends \Idno\Common\Plugin {
             ];
 
             Idno::site()->logging()->debug('sending micropub request', ['endpoint' => $details['micropub_endpoint'], 'params' => $params]);
-            $resp = Webservice::post($details['micropub_endpoint'], self::filterEmpty($params), $headers);
+
+              $resp = Webservice::post($details['micropub_endpoint'], http_build_query(self::filterEmpty($params)), $headers);
+
+
+            
 
             $header = $resp['header'];
             $content = $resp['content'];
