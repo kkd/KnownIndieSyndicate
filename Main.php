@@ -17,11 +17,11 @@ class Main extends \Idno\Common\Plugin {
     function registerPages()
     {
         parent::registerPages();
-        \\Idno\\Core\\Idno::site()->routes()->addRoute('/account/indiesyndicate/?', '\IdnoPlugins\IndieSyndicate\Pages\Account');
-        \\Idno\\Core\\Idno::site()->routes()->addRoute('/account/indiesyndicate/add/?', '\IdnoPlugins\IndieSyndicate\Pages\Add');
-        \\Idno\\Core\\Idno::site()->routes()->addRoute('/account/indiesyndicate/cb/?', '\IdnoPlugins\IndieSyndicate\Pages\Callback');
-        \\Idno\\Core\\Idno::site()->routes()->addRoute('/account/indiesyndicate/edit/?', '\IdnoPlugins\IndieSyndicate\Pages\Edit');
-        \\Idno\\Core\\Idno::site()->routes()->addRoute('/account/indiesyndicate/delete/?', '\IdnoPlugins\IndieSyndicate\Pages\Delete');
+        \Idno\Core\Idno::site()->routes()->addRoute('/account/indiesyndicate/?', '\IdnoPlugins\IndieSyndicate\Pages\Account');
+        \Idno\Core\Idno::site()->routes()->addRoute('/account/indiesyndicate/add/?', '\IdnoPlugins\IndieSyndicate\Pages\Add');
+        \Idno\Core\Idno::site()->routes()->addRoute('/account/indiesyndicate/cb/?', '\IdnoPlugins\IndieSyndicate\Pages\Callback');
+        \Idno\Core\Idno::site()->routes()->addRoute('/account/indiesyndicate/edit/?', '\IdnoPlugins\IndieSyndicate\Pages\Edit');
+        \Idno\Core\Idno::site()->routes()->addRoute('/account/indiesyndicate/delete/?', '\IdnoPlugins\IndieSyndicate\Pages\Delete');
 
         Idno::site()->template()->extendTemplate('account/menu/items', 'account/menu/items/indiesyndicate');
     }
