@@ -35,14 +35,14 @@ class Main extends \Idno\Common\Plugin {
         }, ['note', 'article', 'image', 'like', 'share']);
 
 
-        Idno::site()->addEventHook('user/auth/success', function (Event $event) {
+        \Idno\Core\Idno::site()->events()->addListener('user/auth/success', function (Event $event) {
             $is = (array) Idno::site()->session()->currentUser()->indiesyndicate;
             foreach ($is as $url => $details) {
                 Idno::site()->syndication()->registerServiceAccount('indiesyndicate', $url, $details['name'], $details);
             }
         });
 
-        Idno::site()->addEventHook('post/note/indiesyndicate', function (Event $event) {
+        \Idno\Core\Idno::site()->events()->addListener('post/note/indiesyndicate', function (Event $event) {
             $eventdata = $event->data();
             $sa = $eventdata['syndication_account'];
             $object = $eventdata['object'];
@@ -61,7 +61,7 @@ class Main extends \Idno\Common\Plugin {
             $this->doMicropub($sa, $object, $params);
         });
 
-        Idno::site()->addEventHook('post/image/indiesyndicate', function (Event $event) {
+        \Idno\Core\Idno::site()->events()->addListener('post/image/indiesyndicate', function (Event $event) {
             $eventdata = $event->data();
             $sa = $eventdata['syndication_account'];
             $object = $eventdata['object'];
@@ -111,7 +111,7 @@ class Main extends \Idno\Common\Plugin {
             }
         });
 
-        Idno::site()->addEventHook('post/article/indiesyndicate', function (Event $event) {
+        \Idno\Core\Idno::site()->events()->addListener('post/article/indiesyndicate', function (Event $event) {
             $eventdata = $event->data();
             $sa = $eventdata['syndication_account'];
             $object = $eventdata['object'];
@@ -138,7 +138,7 @@ class Main extends \Idno\Common\Plugin {
             $this->doMicropub($sa, $object, $params);
         });
 
-        Idno::site()->addEventHook('post/like/indiesyndicate', function (Event $event) {
+        \Idno\Core\Idno::site()->events()->addListener('post/like/indiesyndicate', function (Event $event) {
             $eventdata = $event->data();
             $sa = $eventdata['syndication_account'];
             $object = $eventdata['object'];
@@ -156,7 +156,7 @@ class Main extends \Idno\Common\Plugin {
             $this->doMicropub($sa, $object, $params);
         });
 
-        Idno::site()->addEventHook('post/repost/indiesyndicate', function (Event $event) {
+        \Idno\Core\Idno::site()->events()->addListener('post/repost/indiesyndicate', function (Event $event) {
             $eventdata = $event->data();
             $sa = $eventdata['syndication_account'];
             $object = $eventdata['object'];
